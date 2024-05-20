@@ -6,7 +6,7 @@ const {
 } = require('../controllers/utils_texts/messages')
 
 const AuthUser = async (req, res, next) => {
-  const token = req.headers.authorization?.replace('Bearer ', '')
+  const token = req.headers.authorization?.split(' ')[1]
   if (!token) return res.status(401).json({ message: UNAUTHORAIZED })
   try {
     const decode = verifyToken(token, process.env.JWT_KEY)
