@@ -1,5 +1,5 @@
 const { Contract } = require('../../models/Contract')
-const { Services } = require('../../models/Services')
+const Services = require('../../models/Services')
 const {
   NEW_CONTRACT,
   DUPLICATE_SERVICE_CONTRACT,

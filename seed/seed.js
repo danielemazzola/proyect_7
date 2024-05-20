@@ -1,7 +1,7 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
-const { User } = require('../models/User')
-const { Services } = require('../models/Services')
+const User = require('../models/User')
+const Services = require('../models/Services')
 const users = [
   {
     name: 'Daniele1',
