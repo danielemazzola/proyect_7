@@ -19,4 +19,4 @@ const contractedSchema = mongoose.Schema(
 )
 
 const Contract = mongoose.model('Product', contractedSchema)
-module.exports = { Contract }
+module.exports = Contract

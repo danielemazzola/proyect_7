@@ -1,4 +1,4 @@
-const { Contract } = require('../../models/Contract')
+const Contract = require('../../models/Contract')
 const Services = require('../../models/Services')
 const {
   NEW_CONTRACT,
@@ -10,6 +10,9 @@ const NewContract = async (req, res) => {
   try {
     const { idService } = req.body
     const { user } = req
+    const comproveService = await Services.findById(idService)
+    if (!comproveService)
+      return res.status(409).json({ message: NOT_EXIST_SERVICE })
     const existContract = await Contract.find()
       .where('idService')
       .equals(idService)

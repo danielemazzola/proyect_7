@@ -1,4 +1,4 @@
-const { Contract } = require('../../models/Contract')
+const Contract = require('../../models/Contract')
 const {
   NO_SERVICES,
   YOUR_SERVICE,
