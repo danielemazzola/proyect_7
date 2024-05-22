@@ -1,5 +1,9 @@
 const User = require('../../models/User')
-const { NOT_USERS, UPDATE_USER, ERROR } = require('../utils_texts/messages')
+const {
+  NOT_USERS,
+  UPDATE_USER,
+  ERROR
+} = require('../../helpers/texts/messages')
 const Update = async (req, res) => {
   try {
     const { _id } = req.params

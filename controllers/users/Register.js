@@ -1,5 +1,9 @@
 const User = require('../../models/User')
-const { ERROR, DUPLICATE, CREATE_USER } = require('../utils_texts/messages')
+const {
+  ERROR,
+  DUPLICATE,
+  CREATE_USER
+} = require('../../helpers/texts/messages')
 const Register = async (req, res) => {
   try {
     const { email } = req.body

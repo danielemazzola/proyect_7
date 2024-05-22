@@ -3,7 +3,7 @@ const {
   ERROR,
   NOT_SERVICES,
   UPDATE_SERVICE
-} = require('../utils_texts/messages')
+} = require('../../helpers/texts/messages')
 const Update = async (req, res) => {
   try {
     const { _id } = req.params

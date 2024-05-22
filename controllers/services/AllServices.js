@@ -4,7 +4,7 @@ const {
   SERVICE,
   SERVICES,
   NOT_SERVICES
-} = require('../utils_texts/messages')
+} = require('../../helpers/texts/messages')
 
 const AllServices = async (req, res) => {
   try {

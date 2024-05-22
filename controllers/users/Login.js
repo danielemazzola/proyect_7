@@ -4,7 +4,7 @@ const {
   USER_NOT_FOUND,
   PROBLEM_PASSWORD,
   ERROR
-} = require('../utils_texts/messages')
+} = require('../../helpers/texts/messages')
 const { generateJWT } = require('../helpers/generateJWT')
 const Login = async (req, res) => {
   try {

@@ -3,7 +3,7 @@ const {
   ERROR,
   NOT_SERVICES,
   DELETE_SERVICE
-} = require('../utils_texts/messages')
+} = require('../../helpers/texts/messages')
 const Delete = async (req, res) => {
   try {
     const { _id } = req.params

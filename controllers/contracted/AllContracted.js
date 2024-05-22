@@ -4,7 +4,7 @@ const {
   YOUR_SERVICE,
   YOUR_SERVICES,
   ERROR
-} = require('../utils_texts/messages')
+} = require('../../helpers/texts/messages')
 const AllContracted = async (req, res) => {
   try {
     const { user } = req

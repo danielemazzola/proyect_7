@@ -1,5 +1,10 @@
 const User = require('../../models/User')
-const { USER, USERS, NOT_USERS, ERROR } = require('../utils_texts/messages')
+const {
+  USER,
+  USERS,
+  NOT_USERS,
+  ERROR
+} = require('../../helpers/texts/messages')
 const Users = async (req, res) => {
   try {
     const users = await User.find()

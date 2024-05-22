@@ -5,7 +5,7 @@ const {
   DUPLICATE_SERVICE_CONTRACT,
   ERROR,
   NOT_EXIST_SERVICE
-} = require('../utils_texts/messages')
+} = require('../../helpers/texts/messages')
 const NewContract = async (req, res) => {
   try {
     const { idService } = req.body
