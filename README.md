@@ -1,51 +1,127 @@
-## ROCK THE CODE - "PROYECT 7"
+# 🎸 Proyecto 7 Rock the Code 🎸
 
-## FEATURES
+## 🚀 Technologies Used
 
-In this project, I was inspired by a backend system for a banking entity, where users, after registering, will be able to sign up for bank services:
+- **Node.js**
+- **Express.js**
+- **MongoDB**
 
-- Debit card
-- Credit card
+## 📦 Dependencies
 
-To sign up, you must log in.
-
-> The system encrypts and compares passwords, and if they are correct, it generates a token using JWT.
-
-## TECH
-
-- NODE.JS
-- EXPRESS:JS
-- MONGOOSE
-- JWT
-- NODEMON -D
-
-## SCRIPTS
-
-- NPM RUN DEV
-- NPM RUN START
-- NPM RUN SEED
-
-```sh
-With npm run seed, we will register 10 test users in our database.
+```json
+"dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.0"
+},
+"devDependencies": {
+    "nodemon": "^3.1.0"
+}
 ```
 
-## END POINTS
+## 📜 Scripts
 
-#### USER
+- `dev`: `nodemon index.js`
+- `start`: `node index.js`
+- `seed`: `node seed/seed.js`
 
-- /api/users (GET), Access for all application users
-- /api/users/register (POST), User registration
-- /api/users/update/:\_id (PUT), Update user
-- /api/users/login (POST), Login user
+The `npm run seed` script adds 8 users to the database.
 
-#### SERVICES
+## 🌐 API Routes
 
-- /api/services (GET), Access for all services
-- /api/services/create (POST), Create services
-- /api/services/update/:\_id (PUT), Update service
-- /api/services/delete/:\_id (DELETE), Delete service
+### Users
 
-#### CONTRACT
+- **Base URL**: `/api/users`
+  - `GET /`: Fetch all users (`AllUsers`)
+  - `POST /register`: Register a new user (`Register`)
+  - `PUT /update/:_id`: Update a user by ID (`AuthUser`, `Update`)
+  - `POST /login`: Login a user (`Login`)
 
-- /api/contracted (GET), Access for my services contracted
-- /api/contracted/new-contract (POST), Add new service to my account
+### Services
+
+- **Base URL**: `/api/services`
+  - `GET /`: Fetch all services (`AllServices`)
+  - `POST /create`: Create a new service (`Create`)
+  - `PUT /update/:_id`: Update a service by ID (`Update`)
+  - `DELETE /delete/:_id`: Delete a service by ID (`Delete`)
+
+### Contracts
+
+- **Base URL**: `/api/contracted`
+  - `GET /`: Fetch all contracted services (`AuthUser`, `AllContracted`)
+  - `POST /new-contract`: Create a new contract (`AuthUser`, `NewContract`)
+
+## 📄 Sample Data
+
+### Create a User
+
+To create a user, send the following JSON payload:
+
+```json
+{
+  "name": "Daniele11s0",
+  "lastName": "Mazzola1",
+  "email": "correos1s10@correo.com",
+  "age": 38,
+  "phone": 777777778,
+  "password": "1234567"
+}
+```
+
+### User Login
+
+After registering, you can log in with:
+
+```json
+{
+  "email": "correo1@correo.com",
+  "password": "Password-1"
+}
+```
+
+You will receive a token to authenticate protected routes such as:
+
+- `PUT /update/:_id` (user routes)
+- Contract routes:
+  - `GET /api/contracted` (`AuthUser`, `AllContracted`)
+  - `POST /api/contracted/new-contract` (`AuthUser`, `NewContract`)
+
+### Create a Service
+
+To create a service, send the following JSON payload:
+
+```json
+{
+  "serviceName": "Credit card",
+  "code": 4
+}
+```
+
+> Note: The code must be unique and manually added, serving as a distinct ID separate from MongoDB/Mongoose generated IDs.
+
+### View Contracts
+
+To view your contracts, access:
+`/api/contracted` with a valid Bearer Token.
+
+### Create a New Contract
+
+To create a new contract, send the following JSON payload to `/api/contracted/new-contract`:
+
+```json
+{
+  "idService": "664bb4586b27704a2207d059"
+}
+```
+
+## 👨‍💻 Author
+
+Work done by Daniele Mazzola
+
+🔗 [GitHub Repository](https://github.com/danielemazzola/proyect_7)
+
+```
+
+```
