@@ -12,6 +12,7 @@ const {
   PROBLEM_PASSWORD,
   UPDATE_NEW_ADMIN,
   FORBIDDEN,
+  DELETE_USER,
   ERROR
 } = require('../../helpers/messages')
 
@@ -92,5 +93,24 @@ const changeRole = async (req, res) => {
     return res.status(500).json({ message: ERROR })
   }
 }
+const deleteUser = async (req, res) => {
+  const { _id } = req.params
+  const { user } = req
+  //DELETE ONLY USER === USER
+  if (_id.toString() === user._id.toString()) {
+    const deleteUser = await User.findByIdAndDelete(_id)
+    return res.status(200).json({ message: DELETE_USER, deleteUser })
+  }
+  //DELETE ONLY ADMIN !== USER
+  const isAdmin = user.roles.filter((val) => val === 'admin')
+  if (isAdmin.length) {
+    const existUserDelete = await User.findByIdAndDelete(_id)
+    if (!existUserDelete)
+      return res.status(404).json({ message: USER_NOT_FOUND })
+    else return res.status(200).json({ message: DELETE_USER, existUserDelete })
+  } else {
+    return res.status(403).json({ message: FORBIDDEN })
+  }
+}
 
-module.exports = { Users, Update, Register, Login, changeRole }
+module.exports = { Users, Update, Register, Login, changeRole, deleteUser }
