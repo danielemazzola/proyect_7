@@ -96,20 +96,26 @@ const changeRole = async (req, res) => {
 const deleteUser = async (req, res) => {
   const { _id } = req.params
   const { user } = req
-  //DELETE ONLY USER === USER
-  if (_id.toString() === user._id.toString()) {
-    const deleteUser = await User.findByIdAndDelete(_id)
-    return res.status(200).json({ message: DELETE_USER, deleteUser })
-  }
-  //DELETE ONLY ADMIN !== USER
-  const isAdmin = user.roles.filter((val) => val === 'admin')
-  if (isAdmin.length) {
-    const existUserDelete = await User.findByIdAndDelete(_id)
-    if (!existUserDelete)
-      return res.status(404).json({ message: USER_NOT_FOUND })
-    else return res.status(200).json({ message: DELETE_USER, existUserDelete })
-  } else {
-    return res.status(403).json({ message: FORBIDDEN })
+  try {
+    //DELETE ONLY USER === USER
+    if (_id.toString() === user._id.toString()) {
+      const deleteUser = await User.findByIdAndDelete(_id)
+      return res.status(200).json({ message: DELETE_USER, deleteUser })
+    }
+    //DELETE ONLY ADMIN !== USER
+    const isAdmin = user.roles.filter((val) => val === 'admin')
+    if (isAdmin.length) {
+      const existUserDelete = await User.findByIdAndDelete(_id)
+      if (!existUserDelete)
+        return res.status(404).json({ message: USER_NOT_FOUND })
+      else
+        return res.status(200).json({ message: DELETE_USER, existUserDelete })
+    } else {
+      return res.status(403).json({ message: FORBIDDEN })
+    }
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ message: ERROR })
   }
 }
 
