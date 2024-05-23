@@ -1,127 +1,98 @@
-# 🎸 Proyecto 7 Rock the Code 🎸
+# 🎸 Project 7: Rock the Code
 
-## 🚀 Technologies Used
+## 🛠️ Technologies Used
 
-- **Node.js**
-- **Express.js**
-- **MongoDB**
+- Node.js
+- Express.js
+- MongoDB
 
 ## 📦 Dependencies
 
 ```json
 "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.4.0"
-},
-"devDependencies": {
-    "nodemon": "^3.1.0"
+  "bcrypt": "^5.1.1",
+  "dotenv": "^16.4.5",
+  "express": "^4.19.2",
+  "jsonwebtoken": "^9.0.2",
+  "mongoose": "^8.4.0"
 }
 ```
 
-## 📜 Scripts
+## 🛠️ Development Dependencies
 
-- `dev`: `nodemon index.js`
-- `start`: `node index.js`
-- `seed`: `node seed/seed.js`
+```json
+"devDependencies": {
+  "nodemon": "^3.1.0"
+}
+```
 
-The `npm run seed` script adds 8 users to the database.
+## 🚀 Scripts
 
-## 🌐 API Routes
+```json
+"scripts": {
+  "dev": "nodemon index.js",
+  "start": "node index.js",
+  "seed": "node seed/seed.js"
+}
+```
 
-### Users
+The `npm run seed` script adds 10 users to the database.
 
-- **Base URL**: `/api/users`
-  - `GET /`: Fetch all users (`AllUsers`)
-  - `POST /register`: Register a new user (`Register`)
-  - `PUT /update/:_id`: Update a user by ID (`AuthUser`, `Update`)
-  - `POST /login`: Login a user (`Login`)
+## 📋 Routes
 
-### Services
+### USERS
 
-- **Base URL**: `/api/services`
-  - `GET /`: Fetch all services (`AllServices`)
-  - `POST /create`: Create a new service (`Create`)
-  - `PUT /update/:_id`: Update a service by ID (`Update`)
-  - `DELETE /delete/:_id`: Delete a service by ID (`Delete`)
+| Method | Route                           | Middleware | Description            |
+| ------ | ------------------------------- | ---------- | ---------------------- |
+| GET    | `/api/users`                    | None       | Get all users          |
+| POST   | `/api/users/register`           | None       | Register a new user    |
+| PUT    | `/api/users/update/:_id`        | AuthUser   | Update user by ID      |
+| POST   | `/api/users/login`              | None       | User login             |
+| PUT    | `/api/users/modified-role/:_id` | AuthUser   | Change user role by ID |
+| DELETE | `/api/users/delete/:_id`        | AuthUser   | Delete user by ID      |
 
-### Contracts
-
-- **Base URL**: `/api/contracted`
-  - `GET /`: Fetch all contracted services (`AuthUser`, `AllContracted`)
-  - `POST /new-contract`: Create a new contract (`AuthUser`, `NewContract`)
-
-## 📄 Sample Data
-
-### Create a User
-
-To create a user, send the following JSON payload:
+To create a user, you need to send:
 
 ```json
 {
-  "name": "Daniele11s0",
-  "lastName": "Mazzola1",
-  "email": "correos1s10@correo.com",
+  "name": "Dani",
+  "lastName": "Mazzola",
+  "email": "dani@correo.com",
   "age": 38,
   "phone": 777777778,
-  "password": "1234567"
+  "password": "123456"
 }
 ```
 
-### User Login
+### POSTS
 
-After registering, you can log in with:
+| Method | Route                         | Middleware | Description       |
+| ------ | ----------------------------- | ---------- | ----------------- |
+| GET    | `/api/posts`                  | AuthUser   | Get all posts     |
+| GET    | `/api/posts/:_id`             | AuthUser   | Get post by ID    |
+| POST   | `/api/posts/new-post`         | AuthUser   | Create a new post |
+| PUT    | `/api/posts/edit-post/:_id`   | AuthUser   | Update post by ID |
+| DELETE | `/api/posts/delete-post/:_id` | AuthUser   | Delete post by ID |
+
+To create a post, you need to send:
 
 ```json
 {
-  "email": "correo1@correo.com",
-  "password": "Password-1"
+  "title": "Hello World",
+  "body": "Lorem Ipsum"
 }
 ```
 
-You will receive a token to authenticate protected routes such as:
+### REPLY
 
-- `PUT /update/:_id` (user routes)
-- Contract routes:
-  - `GET /api/contracted` (`AuthUser`, `AllContracted`)
-  - `POST /api/contracted/new-contract` (`AuthUser`, `NewContract`)
+| Method | Route                          | Middleware | Description        |
+| ------ | ------------------------------ | ---------- | ------------------ |
+| GET    | `/api/reply`                   | AuthUser   | Get all replies    |
+| GET    | `/api/reply/:_id`              | AuthUser   | Get reply by ID    |
+| POST   | `/api/reply/new-reply/:_id`    | AuthUser   | Create a new reply |
+| PUT    | `/api/reply/edit-reply/:_id`   | AuthUser   | Update reply by ID |
+| DELETE | `/api/reply/delete-reply/:_id` | AuthUser   | Delete reply by ID |
 
-### Create a Service
+## ✨ Created by Daniele Mazzola
 
-To create a service, send the following JSON payload:
-
-```json
-{
-  "serviceName": "Credit card",
-  "code": 4
-}
-```
-
-> Note: The code must be unique and manually added, serving as a distinct ID separate from MongoDB/Mongoose generated IDs.
-
-### View Contracts
-
-To view your contracts, access:
-`/api/contracted` with a valid Bearer Token.
-
-### Create a New Contract
-
-To create a new contract, send the following JSON payload to `/api/contracted/new-contract`:
-
-```json
-{
-  "idService": "664bb4586b27704a2207d059"
-}
-```
-
-## 👨‍💻 Author
-
-Work done by Daniele Mazzola
-
-🔗 [GitHub Repository](https://github.com/danielemazzola/proyect_7)
-
-```
-
-```
+[GitHub](https://github.com/danielemazzola/proyect_7)
