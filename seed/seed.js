@@ -18,7 +18,7 @@ const users = [
     age: 28,
     phone: 777777779,
     password: 'Password-2',
-    roles: ['admin']
+    roles: ['user']
   },
   {
     name: 'Daniele3',
@@ -36,7 +36,7 @@ const users = [
     age: 35,
     phone: 777777771,
     password: 'Password-4',
-    roles: ['admin']
+    roles: ['user']
   },
   {
     name: 'Daniele5',
@@ -54,7 +54,7 @@ const users = [
     age: 32,
     phone: 777777773,
     password: 'Password-6',
-    roles: ['admin']
+    roles: ['user']
   },
   {
     name: 'Daniele7',
@@ -72,7 +72,7 @@ const users = [
     age: 41,
     phone: 777777775,
     password: 'Password-8',
-    roles: ['admin']
+    roles: ['user']
   },
   {
     name: 'Daniele9',
@@ -90,7 +90,7 @@ const users = [
     age: 39,
     phone: 777777777,
     password: 'Password-10',
-    roles: ['admin']
+    roles: ['user']
   }
 ]
 
