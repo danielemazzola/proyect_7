@@ -12,6 +12,14 @@ app.use(express.urlencoded({ extended: false }))
 const users = require('./routes/users')
 app.use('/api/users', users)
 
+//Everything related to posts
+const posts = require('./routes/posts')
+app.use('/api/post', posts)
+
+//Everything related to replyPost
+const replyPost = require('./routes/replyPost')
+app.use('/api/reply-post', replyPost)
+
 //ERRORS URI
 app.get('*', (req, res, next) => {
   const ERROR = 'URL NOT FOUND🤦‍♂️'

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
-const userSchema = mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -29,9 +29,14 @@ const userSchema = mongoose.Schema(
       type: String,
       trim: true,
       required: true
+    },
+    roles: {
+      type: [String],
+      enum: ['user', 'admin'],
+      default: ['user']
     }
   },
-  { timeStamps: true }
+  { timestamps: true }
 )
 
 userSchema.pre('save', async function (next) {

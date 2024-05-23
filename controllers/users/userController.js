@@ -11,7 +11,7 @@ const {
   USER_NOT_FOUND,
   PROBLEM_PASSWORD,
   ERROR
-} = require('../../helpers/texts/messages')
+} = require('../../helpers/messages')
 const Users = async (req, res) => {
   try {
     const users = await User.find()
