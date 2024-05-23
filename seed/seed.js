@@ -1,7 +1,6 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 const User = require('../models/User')
-const Services = require('../models/Services')
 const users = [
   {
     name: 'Daniele1',
@@ -68,18 +67,12 @@ const users = [
     password: 'Password-8'
   }
 ]
-const services = [
-  { serviceName: 'Debit card', code: 1 },
-  { serviceName: 'Credit card', code: 2 }
-]
 
 mongoose
   .connect(process.env.URI_DB)
   .then(async () => {
     const allUser = await User.find()
-    const allServices = await Services.find()
     if (allUser.length) await User.collection.drop()
-    if (allServices.length) await Services.collection.drop()
   })
   .catch((err) => console.log(`Error deleting data: ${err}`))
   .then(async () => {
@@ -87,7 +80,6 @@ mongoose
       const newUser = new User(user)
       await newUser.save()
     }
-    await Services.insertMany(services)
   })
   .catch((err) => console.log(`Error creating data: ${err}`))
   // Por último nos desconectaremos de la DB.

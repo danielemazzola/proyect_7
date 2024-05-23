@@ -1,12 +1,14 @@
 const express = require('express')
 const ROUTER = express.Router()
 const { AuthUser } = require('../middleware/AuthUser')
-const AllUsers = require('../controllers/users/AllUsers')
-const Register = require('../controllers/users/Register')
-const Update = require('../controllers/users/Update')
-const Login = require('../controllers/users/Login')
+const {
+  Users,
+  Update,
+  Register,
+  Login
+} = require('../controllers/users/userController')
 
-ROUTER.get('/', AllUsers)
+ROUTER.get('/', Users)
 ROUTER.post('/register', Register)
 ROUTER.put('/update/:_id', AuthUser, Update)
 ROUTER.post('/login', Login)

@@ -1,9 +1,9 @@
 const User = require('../models/User')
-const { verifyToken } = require('../controllers/helpers/generateJWT')
+const { verifyToken } = require('../helpers/generateJWT')
 const {
   UNAUTHORAIZED,
   AUTHORIZATION_ERROR
-} = require('../controllers/utils_texts/messages')
+} = require('../helpers/texts/messages')
 
 const AuthUser = async (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1]

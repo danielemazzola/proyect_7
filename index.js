@@ -12,14 +12,6 @@ app.use(express.urlencoded({ extended: false }))
 const users = require('./routes/users')
 app.use('/api/users', users)
 
-//Everything related to users
-const services = require('./routes/services')
-app.use('/api/services', services)
-
-//Everything related to products
-const contracted = require('./routes/contracted')
-app.use('/api/contracted', contracted)
-
 //ERRORS URI
 app.get('*', (req, res, next) => {
   const ERROR = 'URL NOT FOUND🤦‍♂️'
