@@ -51,10 +51,9 @@ const updatePost = async (req, res) => {
   const { user } = req
   try {
     const post = await Post.findById(_id)
-    if (
-      user.roles[0] === 'user' &&
-      post.idUser.toString() !== user._id.toString()
-    )
+    if (!post) return res.status(409).json({ message: NOT_EXIST_POST })
+    const isUser = user.roles.filter((val) => val === 'user')
+    if (isUser.length && post.idUser.toString() !== user._id.toString())
       return res.status(409).json({ message: FORBIDDEN })
     const existPost = await Post.findByIdAndUpdate(_id, req.body, { new: true })
     if (!existPost) return res.status(409).json({ message: NOT_EXIST_POST })
@@ -68,13 +67,11 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
   const { _id } = req.params
   const { user } = req
-
   try {
     const post = await Post.findById(_id)
-    if (
-      user.roles[0] === 'user' &&
-      post.idUser.toString() !== user._id.toString()
-    )
+    if (!post) return res.status(409).json({ message: NOT_EXIST_POST })
+    const isUser = user.roles.filter((val) => val === 'user')
+    if (isUser.length && post.idUser.toString() !== user._id.toString())
       return res.status(409).json({ message: FORBIDDEN })
     const existPost = await Post.findByIdAndDelete(_id)
     if (!existPost) return res.status(409).json({ message: NOT_EXIST_POST })
