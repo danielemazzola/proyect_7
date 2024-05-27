@@ -23,7 +23,6 @@ app.use('/api/reply-post', replyPost)
 //ERRORS URI
 app.get('*', (req, res, next) => {
   const ERROR = 'URL NOT FOUND🤦‍♂️'
-  ERROR.status = 404
   next(ERROR)
 })
 
