@@ -8,7 +8,7 @@ const {
   Login,
   changeRole,
   deleteUser
-} = require('../controllers/users/userController')
+} = require('../controllers/userController')
 
 ROUTER.get('/', Users)
 ROUTER.post('/register', Register)

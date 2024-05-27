@@ -8,7 +8,7 @@ const {
   createReply,
   updateReply,
   deleteReply
-} = require('../controllers/replyPosts/replyPostsController')
+} = require('../controllers/replyPostsController')
 
 ROUTER.get('/', AuthUser, getAllReplies)
 ROUTER.get('/:_id', AuthUser, getReply)

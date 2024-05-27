@@ -8,7 +8,7 @@ const {
   createPost,
   updatePost,
   deletePost
-} = require('../controllers/posts/postsController')
+} = require('../controllers/postsController')
 
 ROUTER.get('/', AuthUser, getAllPosts)
 ROUTER.get('/:_id', AuthUser, getPost)

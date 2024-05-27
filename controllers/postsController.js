@@ -1,4 +1,4 @@
-const Post = require('../../models/Post')
+const Post = require('../models/Post')
 const {
   ERROR,
   POST,
@@ -8,7 +8,7 @@ const {
   UPDATE_POST,
   DELETE_POST,
   FORBIDDEN
-} = require('../../helpers/messages')
+} = require('../helpers/messages')
 
 const createPost = async (req, res) => {
   const { user } = req

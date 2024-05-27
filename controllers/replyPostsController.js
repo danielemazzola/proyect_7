@@ -1,5 +1,5 @@
-const ReplyPost = require('../../models/ReplyPost')
-const Post = require('../../models/Post')
+const ReplyPost = require('../models/ReplyPost')
+const Post = require('../models/Post')
 const {
   ERROR,
   NOT_EXIST_POST,
@@ -10,7 +10,7 @@ const {
   REPLY,
   UPDATE_REPLY,
   DELETE_REPLY
-} = require('../../helpers/messages')
+} = require('../helpers/messages')
 
 const createReply = async (req, res) => {
   const { _id } = req.params

@@ -1,6 +1,6 @@
-const User = require('../../models/User')
+const User = require('../models/User')
 const bcrypt = require('bcrypt')
-const { generateJWT } = require('../../helpers/generateJWT')
+const { generateJWT } = require('../helpers/generateJWT')
 const {
   USER,
   USERS,
@@ -14,7 +14,7 @@ const {
   FORBIDDEN,
   DELETE_USER,
   ERROR
-} = require('../../helpers/messages')
+} = require('../helpers/messages')
 
 const Register = async (req, res) => {
   try {
