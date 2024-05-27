@@ -23,7 +23,7 @@ const Register = async (req, res) => {
     if (duplicateUser) return res.status(409).json({ message: DUPLICATE })
     const newUser = new User(req.body)
     await newUser.save()
-    res.status(201).json({ message: CREATE_USER, newUser })
+    return res.status(201).json({ message: CREATE_USER, newUser })
   } catch (error) {
     console.log(error)
     return res.status(500).json({ message: ERROR })
