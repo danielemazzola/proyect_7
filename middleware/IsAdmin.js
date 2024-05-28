@@ -1,9 +1,6 @@
+const { roleIsAdmin } = require('../helpers/roleIsAdmin')
 const User = require('../models/User')
 
-const roleIsAdmin = (user) => {
-  const role = user.roles.filter((val) => val === 'admin')
-  return role.length
-}
 const IsAdmin = async (req, res, next) => {
   const { user } = req
   try {
@@ -18,6 +15,7 @@ const IsAdmin = async (req, res, next) => {
     console.log(error)
   }
 }
+
 const Authority = async (req, res, next) => {
   const { _id } = req.params
   const { user } = req
