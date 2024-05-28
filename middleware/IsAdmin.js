@@ -1,8 +1,8 @@
 const User = require('../models/User')
 const IsAdmin = async (req, res, next) => {
   const { user } = req
-  const isAdmin = user.roles.filter((val) => val === 'admin')
   try {
+    const isAdmin = user.roles.filter((val) => val === 'admin')
     if (isAdmin.length) {
       next()
     } else {
@@ -14,4 +14,5 @@ const IsAdmin = async (req, res, next) => {
     console.log(error)
   }
 }
+
 module.exports = { IsAdmin }
