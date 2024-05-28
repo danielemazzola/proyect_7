@@ -1,9 +1,13 @@
 const User = require('../models/User')
+
+const roleIsAdmin = (user) => {
+  const role = user.roles.filter((val) => val === 'admin')
+  return role.length
+}
 const IsAdmin = async (req, res, next) => {
   const { user } = req
   try {
-    const isAdmin = user.roles.filter((val) => val === 'admin')
-    if (isAdmin.length) {
+    if (roleIsAdmin(user) > 0) {
       next()
     } else {
       return res
@@ -14,5 +18,20 @@ const IsAdmin = async (req, res, next) => {
     console.log(error)
   }
 }
+const Authority = async (req, res, next) => {
+  const { _id } = req.params
+  const { user } = req
+  try {
+    if (_id.toString() === user._id.toString() || roleIsAdmin(user) > 0) {
+      next()
+    } else {
+      return res
+        .status(409)
+        .json({ message: 'You don`t have permission to delete others users' })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-module.exports = { IsAdmin }
+module.exports = { IsAdmin, Authority }
