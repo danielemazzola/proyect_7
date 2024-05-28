@@ -80,14 +80,9 @@ const changeRole = async (req, res) => {
   try {
     const existUser = await User.findById(_id)
     if (!existUser) return res.status(404).json({ message: NOT_USERS })
-    const admin = user.roles.filter((val) => val === 'admin')
-    if (admin.length) {
-      existUser.roles = ['admin']
-      const updateNewAdmin = await existUser.save()
-      return res.status(200).json({ message: UPDATE_NEW_ADMIN, updateNewAdmin })
-    } else {
-      return res.status(403).json({ message: FORBIDDEN })
-    }
+    existUser.roles = ['admin']
+    const updateNewAdmin = await existUser.save()
+    return res.status(200).json({ message: UPDATE_NEW_ADMIN, updateNewAdmin })
   } catch (error) {
     console.log(error)
     return res.status(500).json({ message: ERROR })
